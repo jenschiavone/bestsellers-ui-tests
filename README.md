@@ -1,10 +1,10 @@
 Must have node and npm installed.
 Create project directory and cd into it.
 
-## Initialize project with npm and install Protractor
+### Initialize project with npm and install Protractor
 
-`npm init -y`
-`npm install protractor`
+`npm init -y`<br/>
+`npm install protractor`<br/>
 
 Create `config.ts` file:
 
@@ -16,26 +16,26 @@ exports.config = {
 };
 ```
 
-Comment out seleniumAddress line for now since we are using:
+Comment out `seleniumAddress` line for now since we are using:
 `directConnect: true`
 This way you will not have to manually start Selenium Sever.
 
-## Install Typescript
+### Install Typescript
 
 `npm install typescript`
 
-Protractor cannot understand Typescript by default, so there are some configs that need to be set:
-`tsc --init`
-^^ This generates the `tsconfig.json` file.
-`npm install ts-node`
-`npm install @types/node`
+Protractor cannot understand Typescript by default, so there are some configs that need to be set:<br/>
+`tsc --init`<br/>
+^^ This generates the `tsconfig.json` file.<br/>
+`npm install ts-node`<br/>
+`npm install @types/node`<br/>
 
 Protractor cannot invoke Typescript files. It can only compile and run JavaScript.
 In the `tsconfig.json` file, uncomment the `outDir` option and set an output location for your transpiled JS files.
-Also, set `target` to `es6` and add `"exclude": ["node_modules"]`
+Also, set `target` to `es6` and add<br/> `"exclude": ["node_modules"]`
 
 Put your test execution command in the `scripts` section of `package.json` for easier command-line execution. Here I have called it `cucumber`
-Add a `protractor` property to provide knowledge of the Protractor from node_modules, as opposed to a globally installed version of Protractor.
+Add a `protractor` property to provide knowledge of the Protractor from `node_modules`, as opposed to a globally installed version of Protractor.
 Also add a property for the `webdriver-manager update` command for this instance of Protractor.
 
 ````json
@@ -57,20 +57,13 @@ This will not need to be run every time you run the tests.
 The `precucumber` property above is a command that executes before the `cucumber` command. In this case we are transpiling all the typescript files.
 There is also a `postcucumber` command available if needed. Any property you put here has a corresponding `pre` and `post` option.
 
-## Add Cucumber
+### Add Cucumber
 
-`npm install cucumber`
-`npm install protractor-cucumber-framework`
-`npm install @types/cucumber`
+`npm install cucumber`<br/>
+`npm install protractor-cucumber-framework`<br/>
+`npm install @types/cucumber`<br/>
 
 Come up with a Cucumber project structure and create the folders...I'm using this:
-
-cucumber
--features
--stepDefinitions
--support
--pageObjects
--reports
 
 ```
 project
@@ -83,7 +76,7 @@ project
     └───reports
 ```
 
-## Update config.ts file
+### Update config.ts file
 
 Add `framework`, `frameworkPath`, and `cucumberOpts` sections. Update the `specs` section.
 
@@ -109,17 +102,17 @@ setDefaultTimeout(60 * 1000);
 
 Run `tsc` so that your `timeout.ts` file gets transpiled.
 
-## Install chai and chai-as-promised
+### Install chai and chai-as-promised
 
 These are for your assertions.
 
-`npm install chai`
-`npm install chai-as-promised`
-`npm install @types/chai`
+`npm install chai`<br/>
+`npm install chai-as-promised`<br/>
+`npm install @types/chai`<br/>
 
-## Reports
+### Reports
 
-`npm install protractor-multiple-cucumber-html-reporter-plugin`
+`npm install protractor-multiple-cucumber-html-reporter-plugin`<br/>
 
 Add `format: "json:.tmp/results.json"` to your `cucumberOpts` in `config.ts`
 
