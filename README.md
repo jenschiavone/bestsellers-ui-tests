@@ -120,7 +120,7 @@ Add the `protractor-multiple-cucumber-html-reporter-plugin` in the plugins block
 
 For reference: https://www.npmjs.com/package/protractor-multiple-cucumber-html-reporter-plugin
 
-## Screenshots for failed scenarios
+### Screenshots for failed scenarios
 
 For some reason I could not get this to work in an `After` hook if it was in the `hooks.ts` file. I had to include it in a `steps.ts` file, so I created a separate file solely for this: `report.steps.ts`
 
@@ -141,10 +141,10 @@ After(function(scenarioResult) {
 });
 ```
 
-## Add a test
+### Add a test
 Add a simple test in your feature file to confirm that Protractor, Typescript, and Cucumber are all working.
 Execute the tests with `npm run cucumber`
 
-## Running select tests
+### Running select tests
 
 If you want the ability to run a subset of tests, do so with `@tags` in the `cucumberOpts` section of your `config.ts` file.
