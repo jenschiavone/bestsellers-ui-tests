@@ -7,7 +7,6 @@ export let config: Config = {
   frameworkPath: require.resolve("protractor-cucumber-framework"),
   specs: ["../cucumber/features/test.feature"],
   cucumberOpts: {
-    tags: "@runme", //add tags for the scenarios you want to run when the tests are run
     format: "json:.tmp/results.json",
     require: [
       "./cucumber/features/stepDefinitions/**/*.js",
